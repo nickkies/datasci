@@ -1,0 +1,20 @@
+services:
+  jupyter:
+    build: .
+    container_name: datasci-jupyter
+    # platform: linux/arm64
+    environment:
+      TZ: Asia/Seoul
+      JUPYTER_TOKEN: ${JUPYTER_TOKEN-idas}
+    ports:
+      - '${HOST_PORT-8888}:8888'
+    volumes:
+      - ./notebooks:/home/jovyan/work/notebooks
+      - ./data:/home/jovyan/work/data
+    working_dir: /home/jovyan/work
+    command: >
+      start-notebook.sh --NotebookApp.ip=0.0.0.0
+                        --NotebookApp.port=8888
+                        --NotebookApp.open_browser=False
+                        --NotebookApp.token=${JUPYTER_TOKEN-idas}
+    restart: unless-stopped
