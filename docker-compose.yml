@@ -5,7 +5,7 @@ services:
     # platform: linux/arm64
     environment:
       TZ: Asia/Seoul
-      JUPYTER_TOKEN: ${JUPYTER_TOKEN-idas}
+      JUPYTER_TOKEN: ${JUPYTER_TOKEN-token}
     ports:
       - '${HOST_PORT-8888}:8888'
     volumes:
@@ -16,5 +16,5 @@ services:
       start-notebook.sh --NotebookApp.ip=0.0.0.0
                         --NotebookApp.port=8888
                         --NotebookApp.open_browser=False
-                        --NotebookApp.token=${JUPYTER_TOKEN-idas}
+                        --NotebookApp.token=${JUPYTER_TOKEN-token}
     restart: unless-stopped

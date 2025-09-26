@@ -18,13 +18,14 @@
 Mac
 
 ```bash
-docker compose build
+docker compose build --no-cache
 docker compose up -d
 ```
 
-Window (NVIDIA GPU)
+~~Window (NVIDIA GPU)~~
 
 ```bash
-docker compose -f docker-compose.yml -f docker-compose.gpu.yml build
+docker compose -f docker-compose.yml -f docker-compose.gpu.yml build --no-cache
 docker compose -f docker-compose.yml -f docker-compose.gpu.yml up -d
+watch -n 1 nvidia-smi
 ```
